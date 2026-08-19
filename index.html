@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>trac — Privacy Policy</title>
+<!--
+  Deliberately self-contained: no web fonts, no analytics, no external requests of any
+  kind. A privacy policy that loads Google Fonts hands every reader's IP address to
+  Google, which rather undermines the document.
+-->
+<style>
+  :root {
+    --surface: #F5F7F9; --raised: #FFFFFF; --border: #DCE3EA;
+    --ink: #0F1720; --ink-muted: #566373; --ink-subtle: #8894A2;
+    --felt: #9E4E8C; --felt-deep: #77386A;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 22px 96px;
+    background: var(--surface); color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px; line-height: 1.6;
+  }
+  main { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h1 .dot { color: var(--felt); }
+  h2 { font-size: 21px; line-height: 1.25; margin: 40px 0 10px; }
+  h3 { font-size: 16px; margin: 24px 0 6px; }
+  p, li { color: var(--ink-muted); }
+  li { margin-bottom: 6px; }
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 24px;
+  }
+  .lede { font-size: 18px; color: var(--ink); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 4px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--ink); font-size: 13px; }
+  td { color: var(--ink-muted); }
+  .card {
+    background: var(--raised); border: 1px solid var(--border);
+    border-radius: 16px; padding: 4px 18px 14px; margin: 16px 0;
+  }
+  a { color: var(--felt-deep); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+  footer { margin-top: 56px; font-size: 13px; color: var(--ink-subtle); }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface: #0D141B; --raised: #131C25; --border: #24313D;
+      --ink: #EEF2F6; --ink-muted: #A7B3C0; --ink-subtle: #7C8794;
+      --felt: #C98BBB; --felt-deep: #C98BBB;
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<p class="eyebrow">Privacy Policy</p>
+<h1>trac<span class="dot">.</span></h1>
+<p class="lede">trac records how your training sessions felt. This policy explains exactly
+what it stores, where, and how to get it back or delete it.</p>
+
+<p><strong>Last updated:</strong> 14 August 2026</p>
+
+<h2>Who is responsible</h2>
+<p>trac is an independent project run by an individual developer, who is the data
+controller for the information described here. Contact:
+<a href="mailto:fernandosanchezmp@gmail.com">fernandosanchezmp@gmail.com</a>.</p>
+
+<h2>What trac stores</h2>
+
+<div class="card">
+<table>
+  <tr><th>Data</th><th>Why</th></tr>
+  <tr><td>Your effort rating (1–10) and feel grade (A–D)</td><td>These are the app. They're what you're recording.</td></tr>
+  <tr><td>An optional note you type</td><td>Context the scales can't capture. Always optional.</td></tr>
+  <tr><td>Sport type, duration, and start/end times of a session</td><td>To show which session a rating belongs to, and to compare like with like.</td></tr>
+  <tr><td>When you rated it, and whether that was long after the session</td><td>A rating given days later means something different from a fresh one.</td></tr>
+  <tr><td>Sessions you chose to skip, and rest days you recorded</td><td>Not rating something is information too.</td></tr>
+  <tr><td>Your Strava athlete ID</td><td>To match an incoming session to your account.</td></tr>
+  <tr><td>A notification token for your device</td><td>To send the prompt after a session uploads.</td></tr>
+</table>
+</div>
+
+<h3>What trac does not store</h3>
+<ul>
+  <li><strong>No name, email address, or password.</strong> Accounts are anonymous — the app creates a random identifier and nothing more.</li>
+  <li><strong>No Strava access tokens on any server.</strong> They are held in your device's Keychain and never transmitted to trac's database.</li>
+  <li><strong>No activity content.</strong> No routes, GPS traces, maps, pace, power, heart rate, or Relative Effort. The app never even requests them.</li>
+  <li><strong>No analytics, tracking, advertising, or third-party trackers.</strong> None. There is no advertising identifier, no attribution SDK, and no usage telemetry.</li>
+</ul>
+
+<h2>Health data, and your explicit consent</h2>
+<p>How hard training felt and how your body responded is health-related data — a special
+category under Article 9 of the GDPR. trac processes it only on the basis of your
+<strong>explicit consent</strong>, given when you connect Strava and start recording
+ratings. You can withdraw that consent at any time by deleting your data in the app,
+which erases everything (see below). Withdrawing does not affect processing that already
+happened.</p>
+
+<h2>Where it is stored</h2>
+<p>Ratings are stored in a Postgres database hosted by Supabase in the
+<strong>European Union (Frankfurt)</strong>. Every row is protected by row-level security,
+so the database will only return records belonging to your own account.</p>
+
+<h3>Who else processes it</h3>
+<ul>
+  <li><strong>Supabase</strong> — hosting and database, EU region, under their
+      <a href="https://supabase.com/legal/dpa">Data Processing Addendum</a>.</li>
+  <li><strong>Apple</strong> — delivers push notifications. Apple receives your device
+      token and the notification text. That text contains no training data: it reads
+      "How did that feel?" and nothing more.</li>
+</ul>
+<p><strong>Strava</strong> is not a processor for trac. You authorise trac to read your
+activity list from Strava, and that data travels from Strava to your device. Your use of
+Strava is governed by Strava's own privacy policy.</p>
+<p>Your data is not sold, rented, shared for advertising, or used to train machine-learning
+models.</p>
+
+<h2>No automated decisions about you</h2>
+<p>trac shows short descriptive observations after you submit a rating — for example, that
+an easy session felt harder than usual for you. These are simple comparisons against your
+own history. trac does not diagnose, does not score your readiness, does not tell you what
+to train, and makes no automated decision that produces legal or similarly significant
+effects.</p>
+
+<h2>How long it is kept</h2>
+<p>Until you delete it. Ratings are a long-term record and are meant to accumulate — a
+year-old entry is the point, not clutter. There is no automatic expiry. Deleting removes
+everything immediately.</p>
+
+<h2>Your rights</h2>
+<ul>
+  <li><strong>Access and portability</strong> — Settings → Export my data produces your
+      complete record as JSON and CSV, on demand, without asking anyone.</li>
+  <li><strong>Erasure</strong> — Settings → Delete everything removes all ratings, skips,
+      your profile, and your account. It cascades in the database and clears the Strava
+      tokens from your device. It cannot be undone.</li>
+  <li><strong>Rectification, or deleting a single entry</strong> — the app deliberately
+      does not let you edit a rating after submitting it, because revising a rating against
+      what you later saw would corrupt the measurement. If you need a specific entry
+      corrected or removed, email
+      <a href="mailto:fernandosanchezmp@gmail.com">fernandosanchezmp@gmail.com</a> and it
+      will be done manually.</li>
+  <li><strong>Objection and withdrawal of consent</strong> — stop using the app and delete
+      your data; both are available at any time without contacting anyone.</li>
+  <li><strong>Complaint</strong> — you may lodge a complaint with your local data
+      protection authority.</li>
+</ul>
+
+<h2>Children</h2>
+<p>trac is not directed at children under 16 and should not be used by them.</p>
+
+<h2>Security</h2>
+<p>All traffic uses HTTPS. Strava credentials are stored in the device Keychain, encrypted
+by iOS and never sent to trac's servers. Database access is restricted per-account by
+row-level security. No system is perfectly secure, but no credential and no activity
+content is held server-side, which limits what a breach could expose.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes materially, the date at the top will change and, where the change
+affects how your data is processed, you will be asked to consent again.</p>
+
+<footer>
+trac is a personal project, not a company. Questions and data requests:
+<a href="mailto:fernandosanchezmp@gmail.com">fernandosanchezmp@gmail.com</a>.
+</footer>
+
+</main>
+</body>
+</html>

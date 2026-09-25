@@ -62,7 +62,7 @@
 <p class="lede">trac records how your training sessions felt. This policy explains exactly
 what it stores, where, and how to get it back or delete it.</p>
 
-<p><strong>Last updated:</strong> 14 August 2026</p>
+<p><strong>Last updated:</strong> 25 September 2026</p>
 
 <h2>Who is responsible</h2>
 <p>trac is an independent project run by an individual developer, who is the data
@@ -79,6 +79,7 @@ controller for the information described here. Contact:
   <tr><td>Sport type, duration, and start/end times of a session</td><td>To show which session a rating belongs to, and to compare like with like.</td></tr>
   <tr><td>When you rated it, and whether that was long after the session</td><td>A rating given days later means something different from a fresh one.</td></tr>
   <tr><td>Sessions you chose to skip, and rest days you recorded</td><td>Not rating something is information too.</td></tr>
+  <tr><td>Patterns the app has pointed out to you — for example, that three of your last five sessions felt off — with when, and the count behind each</td><td>So a pattern is mentioned once, when it first appears, instead of after every session. Worked out from your ratings, deleted with them, and included in the JSON export.</td></tr>
   <tr><td>Your Strava athlete ID</td><td>To match an incoming session to your account.</td></tr>
   <tr><td>A notification token for your device</td><td>To send the prompt after a session uploads.</td></tr>
 </table>
@@ -88,7 +89,7 @@ controller for the information described here. Contact:
 <ul>
   <li><strong>No name, email address, or password.</strong> Accounts are anonymous — the app creates a random identifier and nothing more.</li>
   <li><strong>No Strava access tokens on any server.</strong> They are held in your device's Keychain and never transmitted to trac's database.</li>
-  <li><strong>No activity content.</strong> No routes, GPS traces, maps, pace, power, heart rate, or Relative Effort. The app never even requests them.</li>
+  <li><strong>No activity content.</strong> No routes, GPS traces, maps, pace, power, heart rate, or Relative Effort. From Strava the app reads only each session's name, sport, duration and start time; everything else Strava sends is ignored on your device.</li>
   <li><strong>No analytics, tracking, advertising, or third-party trackers.</strong> None. There is no advertising identifier, no attribution SDK, and no usage telemetry.</li>
 </ul>
 
@@ -110,8 +111,9 @@ so the database will only return records belonging to your own account.</p>
   <li><strong>Supabase</strong> — hosting and database, EU region, under their
       <a href="https://supabase.com/legal/dpa">Data Processing Addendum</a>.</li>
   <li><strong>Apple</strong> — delivers push notifications. Apple receives your device
-      token and the notification text. That text contains no training data: it reads
-      "How did that feel?" and nothing more.</li>
+      token, the notification text — "How did that feel? Rate your session while it's
+      fresh." — and the Strava ID of the session, so that tapping the notification opens
+      the right one. It contains no training data, not even the sport or duration.</li>
 </ul>
 <p><strong>Strava</strong> is not a processor for trac. You authorise trac to read your
 activity list from Strava, and that data travels from Strava to your device. Your use of
@@ -121,8 +123,9 @@ models.</p>
 
 <h2>No automated decisions about you</h2>
 <p>trac shows short descriptive observations after you submit a rating — for example, that
-an easy session felt harder than usual for you. These are simple comparisons against your
-own history. trac does not diagnose, does not score your readiness, does not tell you what
+an easy session felt off, or that three of your last five sessions did — and, on its home
+screen, arrows showing how your rated sessions have moved compared with the period before.
+These are simple comparisons against your own history. trac does not diagnose, does not score your readiness, does not tell you what
 to train, and makes no automated decision that produces legal or similarly significant
 effects.</p>
 
@@ -134,9 +137,10 @@ everything immediately.</p>
 <h2>Your rights</h2>
 <ul>
   <li><strong>Access and portability</strong> — Settings → Export my data produces your
-      complete record as JSON and CSV, on demand, without asking anyone.</li>
+      complete record as JSON, and your training log as CSV, on demand, without asking
+      anyone.</li>
   <li><strong>Erasure</strong> — Settings → Delete everything removes all ratings, skips,
-      your profile, and your account. It cascades in the database and clears the Strava
+      the patterns worked out from them, your profile, and your account. It cascades in the database and clears the Strava
       tokens from your device. It cannot be undone.</li>
   <li><strong>Rectification, or deleting a single entry</strong> — the app deliberately
       does not let you edit a rating after submitting it, because revising a rating against
